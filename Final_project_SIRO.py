@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Dec  6 13:38:16 2019
-
-@author: priya
-"""
-
-# -*- coding: utf-8 -*-
 """
 Queueing_SIRO
 """
