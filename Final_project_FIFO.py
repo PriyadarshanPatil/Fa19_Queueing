@@ -8,17 +8,16 @@ import numpy as np
 from sklearn.utils import shuffle
 s=0
 num_iters = 30
-for s in range(num_iters):
+mu_range = [0.1, 0.2, 0.5]
+lambda_range = [0.1, 0.2, 0.5, 1]
+theta_range = [0.0002, 0.0005, 0.001, 0.002]
+pct1_range = [0.1, 0.2, 0.3, 0.5]
+array_len = len(mu_range) * len(lambda_range) * len(theta_range) * len(pct1_range)
+Avg_queue_length_results = np.zeros((num_iters, array_len))
+Throughput_results = Avg_queue_length_results = np.zeros((num_iters, array_len))    
+w=0
 
-    mu_range = [0.1, 0.2, 0.5]
-    lambda_range = [0.1, 0.2, 0.5, 1]
-    theta_range = [0.0002, 0.0005, 0.001, 0.002]
-    pct1_range = [0.1, 0.2, 0.3, 0.5]
-    array_len = len(mu_range) * len(lambda_range) * len(theta_range) * len(pct1_range)
-    Avg_queue_length_results = np.zeros((num_iters, array_len))
-    Throughput_results = Avg_queue_length_results = np.zeros((num_iters, array_len))    
-    w=0
-    
+for s in range(num_iters):
     for a in range(len(mu_range)):
         for b in range(len(lambda_range)):
             for c in range(len(theta_range)):
@@ -129,7 +128,13 @@ for s in range(num_iters):
                     Avg_queue_length = np.average(Queue_lengths)
                     Avg_queue_length_results[s][w] = Avg_queue_length
                     Throughput_results[s][w] = System_throughput
-                    
+                    print("Iteration ", w)
                     w += 1 
 
 
+f = open("output_FIFO.txt", "a")
+print("Average queue length results below", file=f)
+print(Avg_queue_length_results, file=f)
+print("Throughput results below",file=f)
+print(Throughput_results, file=f)
+f.close()
