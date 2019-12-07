@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 """
-Queueing_FIFO
+Queueing_LIFO
 """
 
 
