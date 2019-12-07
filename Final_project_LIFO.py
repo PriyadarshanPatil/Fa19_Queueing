@@ -14,10 +14,11 @@ theta_range = [0.0002, 0.0005, 0.001, 0.002]
 pct1_range = [0.1, 0.2, 0.3, 0.5]
 array_len = len(mu_range) * len(lambda_range) * len(theta_range) * len(pct1_range)
 Avg_queue_length_results = np.zeros((num_iters, array_len))
-Throughput_results = Avg_queue_length_results = np.zeros((num_iters, array_len))    
-w=0
+Throughput_results = np.zeros((num_iters, array_len))    
+v=0
 
 for s in range(num_iters):
+    w=0
     for a in range(len(mu_range)):
         for b in range(len(lambda_range)):
             for c in range(len(theta_range)):
@@ -128,8 +129,9 @@ for s in range(num_iters):
                     Avg_queue_length = np.average(Queue_lengths)
                     Avg_queue_length_results[s][w] = Avg_queue_length
                     Throughput_results[s][w] = System_throughput
-                    print("Iteration ",w)
+                    print("Iteration ",v)
                     w += 1 
+                    v += 1
 
 f = open("output_LIFO.txt", "a")
 print("Average queue length results below", file=f)
