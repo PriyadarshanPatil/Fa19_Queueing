@@ -7,7 +7,7 @@ Created on Fri Dec  6 13:38:16 2019
 
 # -*- coding: utf-8 -*-
 """
-Queueing_FIFO
+Queueing_SIRO
 """
 
 
